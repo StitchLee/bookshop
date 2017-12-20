@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.bean">
+	<class name="Book" table="book">
+		<id name="bookId" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="bookName" not-null="true" type="java.lang.String">
+		</property>
+		<property name="bookAuthor" not-null="true" type="java.lang.String">
+		</property>
+		<property name="bookPrice" not-null="true" type="int">
+		</property>
+		<property name="bookPic" not-null="true" type="java.lang.String">
+		</property>
+		<property name="bookPress" not-null="true" type="java.lang.String">
+		</property>
+		<many-to-one name="booktype" column="BOOKTYPEID" class="Booktype" lazy="false"></many-to-one>
+		<set name="orderBookSet" table="BOOKORDER" inverse="true" >
+			<key column="BOOKID"></key>
+			<many-to-many class="OrderBook" column="ORDERBOOKID"/>
+		</set>
+	</class>
+</hibernate-mapping>

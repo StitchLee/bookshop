@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.bean">
+	<class name="Booktype" table="booktype">
+		<id name="booktypeId" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="booktypeName" not-null="true" type="java.lang.String">	
+		</property>
+		<set name="bookSet" cascade="delete">
+			<key column="BOOKTYPEID"/>
+			<one-to-many class="Book"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.bean">
+	<class name="Customer" table="customer">
+		<id name="customerId" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="customerName" not-null="true" type="java.lang.String">
+		</property>
+		<property name="customerPwd" not-null="true" type="java.lang.String">
+		</property>
+		<property name="customerTel" not-null="true" type="int">
+		</property>
+		<property name="customerEmail" not-null="true" type="java.lang.String">
+		</property>
+		<property name="customerAddr" not-null="true" type="java.lang.String">
+		</property>
+		<property name="customerTime"  type="java.lang.String">
+		</property>
+		<set name="orderSet" cascade="delete">
+			<key column="CUSTOMERID"></key>
+			<one-to-many class="Orders"/>
+		</set>
+	</class>
+</hibernate-mapping>
